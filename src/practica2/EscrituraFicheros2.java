@@ -17,5 +17,6 @@ public class EscrituraFicheros2 {
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
+        sc.close();
     }
 }

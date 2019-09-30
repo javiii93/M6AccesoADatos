@@ -20,8 +20,7 @@ public class MatrixTxt {
 		String ruta = "frasesmatrix.txt";
 		File matrix = new File(ruta);
 		ArrayList<String>contenidoFichero=new ArrayList<String>();
-		System.out.println(matrix.exists());
-		System.out.println(matrix.getAbsolutePath());
+		
 		if (matrix.exists()) {
 			System.out.println("El archivo matrix.txt ya existe");
 			Scanner sc = new Scanner(matrix);
@@ -29,10 +28,15 @@ public class MatrixTxt {
 			
 			while (sc.hasNext()) {
 				String linea = sc.nextLine();
-				pw.write(linea);
+				contenidoFichero.add(linea);
+			}
+			sc.close();
+			
+			
+			for (int i=0;i<contenidoFichero.size();i++) {
+				pw.write(contenidoFichero.get(i)+"\n");
 			}
 			pw.write("Yo sólo puedo mostrarte la puerta, tú eres quien la tiene que atravesar");
-
 		} else {
 			matrix.createNewFile();
 			System.out.println("se ha creado el archivo matrix.txt");
