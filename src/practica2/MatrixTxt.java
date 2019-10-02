@@ -14,34 +14,36 @@ public class MatrixTxt {
 		 * Realiza un programa que escriba en un fichero llamado frasesMatrix.txt el
 		 * texto: Yo sólo puedo mostrarte la puerta, tú eres quien la tiene que
 		 * atravesar. Si ejecutas el programa dos veces, ¿Qué ocurre? ¿Cómo lo
-		 * solucionamos?
-		 * me he quedado en la creacion de la array y guardar todo el contenido del archivo matrix en la arraypara luego escribirlo*/
+		 * solucionamos? me he quedado en la creacion de la array y guardar todo el
+		 * contenido del archivo matrix en la arraypara luego escribirlo
+		 */
 		PrintWriter pw;
 		String ruta = "frasesmatrix.txt";
 		File matrix = new File(ruta);
+		Scanner sc = null;
 		ArrayList<String>contenidoFichero=new ArrayList<String>();
 		
 		if (matrix.exists()) {
 			System.out.println("El archivo matrix.txt ya existe");
-			Scanner sc = new Scanner(matrix);
-			pw = new PrintWriter(matrix);
+			 sc = new Scanner(matrix);
 			
-			while (sc.hasNext()) {
+			
+			while (sc.hasNextLine()) {
 				String linea = sc.nextLine();
 				contenidoFichero.add(linea);
 			}
 			sc.close();
 			
-			
+			pw = new PrintWriter(matrix);
 			for (int i=0;i<contenidoFichero.size();i++) {
-				pw.write(contenidoFichero.get(i)+"\n");
+				pw.write(contenidoFichero.get(i)+" \r\n");
 			}
-			pw.write("Yo sólo puedo mostrarte la puerta, tú eres quien la tiene que atravesar");
+			pw.write("Yo sólo puedo mostrarte la puerta, tú eres quien la tiene que atravesar \r\n");
 		} else {
 			matrix.createNewFile();
-			System.out.println("se ha creado el archivo matrix.txt");
+			System.out.println("se ha creado el archivo matrix.txt en "+matrix.getAbsolutePath());
 			pw = new PrintWriter(matrix);
-			pw.write("Yo sólo puedo mostrarte la puerta, tú eres quien la tiene que atravesar");
+			pw.write("Yo sólo puedo mostrarte la puerta, tú eres quien la tiene que atravesar \r\n");
 		}
 
 		pw.close();
