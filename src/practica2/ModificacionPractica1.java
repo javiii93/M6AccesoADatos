@@ -98,7 +98,7 @@ public class ModificacionPractica1 {
 				i++;
 
 			}
-		}
+		}sc.close();
 		System.out.println("Mostrando el contenido del maps: ");
 		mostrar();
 
